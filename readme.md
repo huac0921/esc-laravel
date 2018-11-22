@@ -1,25 +1,26 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## 细读Laravel 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+>Laravel 应用的所有请求入口都是 public/index.php 文件。而所有的请求都是经由你的 Web 服务器（Apache/Nginx）通过配置引导到这个文件。 index.php 文件代码并不多，
+但是，这里是加载框架其它部分的起点。index.php 文件加载 Composer 生成的自动加载设置，然后从 bootstrap/app.php 脚本中检索 Laravel 应用程序的实例。
+Laravel 本身采取的第一个动作是创建一个应用程序 / 服务容器。
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+App\Http\Kernel
+- 维修模式：CheckForMaintenanceMode
+> 启动：`php artisan down`  
+  `php artisan down --message="Upgrading Database" --retry=60`    
+  关闭维修模式：`php artisan up`  
+ 
+  在启动维修模式时，storage/framework下会生成一个down文件。
+  `down` 文件格式：  
+  ```
+  {
+      "time": 1542877604,
+      "message": "Upgrading Database",
+      "retry": 60,
+      "allowed": []
+  }
+  
+  ```
 
 ## Learning Laravel
 
